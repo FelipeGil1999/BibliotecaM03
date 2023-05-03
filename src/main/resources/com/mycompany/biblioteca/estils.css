@@ -1,0 +1,24 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+
+
+
+#fondo{
+    -fx-background-color:#b1f3b1 ;
+}
+
+#asignar{
+     
+    -fx-background-color: #ff6e6c;
+    -fx-border-style: solid;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+#imagenB{
+    
+    -fx-border-right: 2px solid black;
+    
+}
