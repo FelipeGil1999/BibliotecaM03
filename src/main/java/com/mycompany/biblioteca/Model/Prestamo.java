@@ -15,11 +15,13 @@ public class Prestamo {
     private String dni;
     private String isbn;
 
-    public Prestamo(LocalDate fecha_prestamo, String dni, String isbn) {
-        this.fecha_prestamo = fecha_prestamo;
+    public Prestamo(String dni, String isbn) {
         this.dni = dni;
         this.isbn = isbn;
+        this.fecha_prestamo = LocalDate.now();
     }
+
+
 
     public LocalDate getFecha_prestamo() {
         return fecha_prestamo;

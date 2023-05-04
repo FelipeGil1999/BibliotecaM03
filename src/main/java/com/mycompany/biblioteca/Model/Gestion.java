@@ -8,8 +8,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -27,6 +33,7 @@ public class Gestion {
         String sql = "INSERT INTO socios VALUES (?,?,?,?,?)";
         PreparedStatement ordre = connection.prepareStatement(sql);
         try {
+            
             ordre.setString(1, socio.getDNI());
             ordre.setString(2, socio.getNombre());
             ordre.setString(3, socio.getApellido());
@@ -156,6 +163,47 @@ public class Gestion {
         
         return condicion;
     }
+        
+           public ObservableList<Libros> llista_libros() { 
+    ObservableList<Libros> llista_libros = FXCollections.observableArrayList();
+    String sql = "select ISBN,Autor,Titulo,Editorial,ID_categoria,idioma,prestado from libros";
+    Connection connection = new Connexio().connecta();
+    try {
+        Statement ordre = connection.createStatement();
+        ResultSet resultSet = ordre.executeQuery(sql);
+        while (resultSet.next()) {
+            if (resultSet.getBoolean(7) == false) {
+                llista_libros.add(
+                    new Libros(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getInt(5),
+                        resultSet.getString(6),
+                        resultSet.getBoolean(7)
+                    )
+                );
+            }
+        }
+
+        connection.close();
+
+        // Ordenar la lista por título de libro en orden alfabético
+        Collections.sort(llista_libros, new Comparator<Libros>() {
+            public int compare(Libros libro1, Libros libro2) {
+                return libro1.getTitulo().compareToIgnoreCase(libro2.getTitulo());
+            }
+        });
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+    return llista_libros;
+}
+
+
+           
+          
     }
     
     

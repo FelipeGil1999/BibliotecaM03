@@ -27,6 +27,21 @@ public class Libros {
         this.Prestado = false;
     }
 
+    public Libros(String ISBN, String autor, String Titulo, String Editorial, int id_categoria, String Idioma, boolean Prestado) {
+        this.ISBN = ISBN;
+        this.autor = autor;
+        this.Titulo = Titulo;
+        this.Editorial = Editorial;
+        this.id_categoria = id_categoria;
+        this.Idioma = Idioma;
+        this.Prestado = Prestado;
+    }
+
+    @Override
+    public String toString() {
+        return Titulo + " " + "(" + autor + ")";
+    }
+
 
 
     public String getISBN() {

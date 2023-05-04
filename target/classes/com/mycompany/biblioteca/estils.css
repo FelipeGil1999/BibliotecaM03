@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#b1f3b1 ;
 }
 
-#asignar{
+#asignar, #eliminar{
      
     -fx-background-color: #ff6e6c;
     -fx-border-style: solid;
