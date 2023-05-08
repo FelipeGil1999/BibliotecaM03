@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.4930167597765363" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="831.0" stylesheets="@estils.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.biblioteca.SecondaryController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="382.0">
+         <children>
+            <ImageView fitHeight="684.0" fitWidth="469.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Foto.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane fx:id="fondo" minHeight="0.0" minWidth="0.0" prefHeight="726.0" prefWidth="527.0">
+         <children>
+            <Button fx:id="asignar" layoutX="48.0" layoutY="497.0" mnemonicParsing="false" onAction="#agregar_usuario" prefHeight="37.0" prefWidth="102.0" text="Asignar" />
+            <ImageView fitHeight="291.0" fitWidth="305.0" layoutX="209.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Green_Playful_Colorful_Book_Store_Logo__1_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="44.0" text="Caja de las Ideas">
+               <font>
+                  <Font name="Abyssinica SIL" size="41.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="193.0" text="Nombre">
+               <font>
+                  <Font name="Abyssinica SIL" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="262.0" text="Apellido">
+               <font>
+                  <Font name="Abyssinica SIL" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="341.0" text="NIF">
+               <font>
+                  <Font name="Abyssinica SIL" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="419.0" text="Direccion">
+               <font>
+                  <Font name="Abyssinica SIL" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nombre" layoutX="162.0" layoutY="190.0" prefHeight="37.0" prefWidth="197.0" />
+            <TextField fx:id="apellido" layoutX="162.0" layoutY="259.0" prefHeight="37.0" prefWidth="197.0" />
+            <TextField fx:id="nif" layoutX="162.0" layoutY="338.0" prefHeight="37.0" prefWidth="197.0" />
+            <TextField fx:id="direccion" layoutX="162.0" layoutY="416.0" prefHeight="37.0" prefWidth="197.0" />
+            <Label layoutX="204.0" layoutY="149.0" text="Nuevo socio">
+               <font>
+                  <Font name="Abyssinica SIL" size="20.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="alta" layoutX="217.0" layoutY="488.0" mnemonicParsing="false" onAction="#isselected" text="Dar de alta">
+               <toggleGroup>
+                  <ToggleGroup fx:id="dar" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="baja" layoutX="219.0" layoutY="526.0" mnemonicParsing="false" onAction="#isselected" text="Dar de baja" toggleGroup="$dar" />
+            <Button fx:id="eliminar" layoutX="48.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="37.0" prefWidth="102.0" text="Eliminar" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
