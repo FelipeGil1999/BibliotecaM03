@@ -23,6 +23,14 @@ public class Socios {
         this.Sancion = 0.0;
     }
 
+    public Socios(String DNI, String Nombre, String Apellido, String Direccion, double Sancion) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Direccion = Direccion;
+        this.Sancion = Sancion;
+    }
+
 
     
 

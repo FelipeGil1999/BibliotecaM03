@@ -17,7 +17,14 @@ public class PrimaryController {
         App.setRoot("secondary");
     }
     
-    public void initialize(URL url, ResourceBundle rb){
-        conecta = connexio.connecta();
+        @FXML
+    private void switchToTerciary() throws IOException {
+        App.setRoot("terciary");
     }
+    
+        @FXML
+    private void switchToQuaternary() throws IOException {
+        App.setRoot("quaternary");
+    }
+    
 }

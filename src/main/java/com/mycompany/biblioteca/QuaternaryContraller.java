@@ -2,6 +2,7 @@ package com.mycompany.biblioteca;
 
 import com.mycompany.biblioteca.Model.Connexio;
 import com.mycompany.biblioteca.Model.Gestion;
+import com.mycompany.biblioteca.Model.Libros;
 import com.mycompany.biblioteca.Model.Socios;
 import java.io.IOException;
 import java.net.URL;
@@ -16,20 +17,24 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-public class SecondaryController {
+public class QuaternaryContraller {
 
     @FXML
-    TextField nif;
+    TextField isbn;
     @FXML
-    TextField nombre;
+    TextField autor;
     @FXML
-    TextField apellido;
+    TextField titulo;
     @FXML
-    TextField direccion;
+    TextField editorial;
     @FXML
-    RadioButton alta;
+    TextField categoria;
     @FXML
-    RadioButton baja;
+    TextField idioma;
+    @FXML
+    RadioButton agregar;
+    @FXML
+    RadioButton eliminar_libro;
     @FXML
     Button asignar;
     @FXML
@@ -45,22 +50,25 @@ public class SecondaryController {
     }
 
     @FXML
-    void agregar_usuario() throws SQLException, IOException {
-        if (nif.getText() != "" && nombre.getText() != "" && apellido.getText() != "" && direccion.getText() != "") {
+    void agregar_libro() throws SQLException, IOException {
+        if (isbn.getText() != "" && autor.getText() != "" && titulo.getText() != "" && editorial.getText() != "" && categoria.getText() != "" && idioma.getText() != "") {
 
-            boolean condi = gestion.dardealta(new Socios(nif.getText(), nombre.getText(), apellido.getText(), direccion.getText()));
+            Libros libro = new Libros(isbn.getText(), autor.getText(), titulo.getText(), editorial.getText(), Integer.parseInt(categoria.getText()), idioma.getText());
+            boolean condi = gestion.IngresarLibro(libro);
+            System.out.println(condi);
+            
             if (condi) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Socio agregado");
+                alert.setTitle("Libro agregado");
                 alert.setHeaderText(null);
-                alert.setContentText("El socio ha sido agregado correctamente.");
+                alert.setContentText("El libro ha sido agregado correctamente.");
 
                 alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("Ha habido un error al agregar el socio.");
+                alert.setContentText("Ha habido un error al agregar el libro.");
 
                 alert.showAndWait();
             }
@@ -68,31 +76,31 @@ public class SecondaryController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Ha habido un error al agregar el socio.");
+            alert.setContentText("Ha habido un error al agregar el libro.");
 
             alert.showAndWait();
         }
     }
 
     @FXML
-    public void eliminar_usuario() {
+    public void eliminar_libro() {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Eliminar socio");
+        alert.setTitle("Eliminar libro");
         alert.setHeaderText(null);
-        alert.setContentText("¿Seguro que desea eliminar al socio?");
+        alert.setContentText("¿Seguro que desea eliminar el libro?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             
-            boolean condi = gestion.dardebaja(nif.getText());
+            boolean condi = gestion.eliminarlibro(isbn.getText());
             System.out.println(condi);
 
             if (!condi) {
                 Alert alert2 = new Alert(Alert.AlertType.ERROR);
                 alert2.setTitle("Error");
                 alert2.setHeaderText(null);
-                alert2.setContentText("Ha habido un error al eliminar el socio.");
+                alert2.setContentText("Ha habido un error al eliminar el libro.");
                 alert2.showAndWait();
             }
         }
@@ -100,17 +108,21 @@ public class SecondaryController {
 
     @FXML
     public void isselected() {
-        if (baja.isSelected()) {
-            nombre.disableProperty().set(true);
-            apellido.disableProperty().set(true);
-            direccion.disableProperty().set(true);
+        if (eliminar_libro.isSelected()) {
+            autor.disableProperty().set(true);
+            titulo.disableProperty().set(true);
+            editorial.disableProperty().set(true);
+            categoria.disableProperty().set(true);
+            idioma.disableProperty().set(true);
             asignar.disableProperty().set(true);
             eliminar.disableProperty().set(false);
 
         } else {
-            nombre.disableProperty().set(false);
-            apellido.disableProperty().set(false);
-            direccion.disableProperty().set(false);
+            autor.disableProperty().set(false);
+            titulo.disableProperty().set(false);
+            editorial.disableProperty().set(false);
+            categoria.disableProperty().set(false);
+            idioma.disableProperty().set(false);
             asignar.disableProperty().set(false);
             eliminar.disableProperty().set(true);
         }

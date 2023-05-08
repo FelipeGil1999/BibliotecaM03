@@ -23,6 +23,40 @@ public class Devolucion {
         this.fecha_devolucion = null;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public LocalDate getFecha_devolucion() {
+        return fecha_devolucion;
+    }
+
+    public void setFecha_devolucion(LocalDate fecha_devolucion) {
+        this.fecha_devolucion = fecha_devolucion;
+    }
+
+    public LocalDate getFecha_limite() {
+        return fecha_limite;
+    }
+
+    public void setFecha_limite(LocalDate fecha_limite) {
+        this.fecha_limite = fecha_limite;
+    }
+    
+    
+
 
     
     

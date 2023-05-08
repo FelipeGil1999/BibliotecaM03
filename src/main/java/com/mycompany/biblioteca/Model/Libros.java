@@ -71,6 +71,10 @@ public class Libros {
     public int getId_categoria() {
         return id_categoria;
     }
+
+    public void setPrestado(boolean Prestado) {
+        this.Prestado = Prestado;
+    }
     
     
     

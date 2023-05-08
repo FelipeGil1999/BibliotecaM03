@@ -3,16 +3,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.biblioteca.TerciaryController">
    <children>
-      <TextField fx:id="dialogo1" layoutX="104.0" layoutY="103.0" />
-      <ComboBox fx:id="lista" layoutX="103.0" layoutY="148.0" prefWidth="150.0" promptText="Libros" />
-      <ListView fx:id="lista2" layoutX="334.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="dni" layoutX="104.0" layoutY="103.0" />
+      <ComboBox fx:id="lista" layoutX="103.0" layoutY="148.0" onMouseClicked="#DescubrirLista1" prefWidth="150.0" promptText="Libros" />
       <Label layoutX="56.0" layoutY="107.0" text="DNI:" />
-      <Button fx:id="p" layoutX="104.0" layoutY="262.0" mnemonicParsing="false" onAction="#prestar" text="Button" />
+      <Button fx:id="prestar" layoutX="41.0" layoutY="349.0" mnemonicParsing="false" onAction="#prestar" text="prestar" />
+      <Button fx:id="inicio" layoutX="453.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToPrimary" text="inicio" />
+      <TextArea fx:id="info" layoutX="353.0" layoutY="40.0" prefHeight="218.0" prefWidth="202.0" />
+      <ComboBox fx:id="lista1" layoutX="103.0" layoutY="187.0" onMouseClicked="#DescubrirLista2" prefWidth="150.0" promptText="Libros" />
+      <ComboBox fx:id="lista2" layoutX="103.0" layoutY="224.0" onMouseClicked="#DescubrirLista3" prefWidth="150.0" promptText="Libros" />
+      <ComboBox fx:id="lista3" layoutX="103.0" layoutY="258.0" onMouseClicked="#DescubrirLista4" prefWidth="150.0" promptText="Libros" />
+      <ComboBox fx:id="lista4" layoutX="103.0" layoutY="294.0" onMouseClicked="#DescubrirLista4" prefWidth="150.0" promptText="Libros" />
    </children>
 </AnchorPane>

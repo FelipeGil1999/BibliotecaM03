@@ -70,6 +70,7 @@
             </RadioButton>
             <RadioButton fx:id="baja" layoutX="219.0" layoutY="526.0" mnemonicParsing="false" onAction="#isselected" text="Dar de baja" toggleGroup="$dar" />
             <Button fx:id="eliminar" layoutX="48.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="37.0" prefWidth="102.0" text="Eliminar" />
+            <Button fx:id="inicio" layoutX="261.0" layoutY="608.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Inicio" />
          </children></AnchorPane>
   </items>
 </SplitPane>

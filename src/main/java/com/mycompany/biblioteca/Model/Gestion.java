@@ -73,7 +73,7 @@ public class Gestion {
         public boolean IngresarLibro(Libros libro) throws SQLException, FileNotFoundException, IOException{
         boolean condicion = false;   
         Connection connection = new Connexio().connecta();
-        String sql = "INSERT INTO socios VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO libros VALUES (?,?,?,?,?,?,?)";
         PreparedStatement ordre = connection.prepareStatement(sql);
         try {
             ordre.setString(1, libro.getISBN());
@@ -148,6 +148,7 @@ public class Gestion {
         boolean condicion = false;   
         Connection connection = new Connexio().connecta();
         String sql = "INSERT INTO prestamos VALUES (?,?,?)";
+        
         PreparedStatement ordre = connection.prepareStatement(sql);
         try {
             ordre.setString(1, prestamo.getDni());
@@ -163,6 +164,21 @@ public class Gestion {
         
         return condicion;
     }
+        
+        public void prestar(String isbn) throws SQLException{
+            Connection connection = new Connexio().connecta();
+        String sql = "UPDATE libros SET prestado=true WHERE ISBN=?";
+        
+        PreparedStatement ordre = connection.prepareStatement(sql);
+        try {
+            ordre.setString(1, isbn);
+
+            ordre.executeUpdate();
+
+        } catch (SQLException throwables) {
+            System.out.println("Error:"+throwables.getMessage());
+        }
+        }
         
            public ObservableList<Libros> llista_libros() { 
     ObservableList<Libros> llista_libros = FXCollections.observableArrayList();
@@ -201,8 +217,61 @@ public class Gestion {
     return llista_libros;
 }
 
+        public boolean AñadirDevolucion(Devolucion devolucion) throws SQLException, FileNotFoundException, IOException{
+        boolean condicion = false;   
+        Connection connection = new Connexio().connecta();
+        String sql = "INSERT INTO devoluciones VALUES (?,?,?,?)";
+        PreparedStatement ordre = connection.prepareStatement(sql);
+        try {
+            ordre.setString(1, devolucion.getDni());
+            ordre.setString(2, devolucion.getIsbn());
+            ordre.setDate(3, java.sql.Date.valueOf(devolucion.getFecha_limite()));
+            ordre.setDate(4, null);
 
+            ordre.executeUpdate();
+            condicion = true;
+
+        } catch (SQLException throwables) {
+            System.out.println("Error:"+throwables.getMessage());
+        }
+        
+        return condicion;
+    }
            
+        
+                   public ObservableList<Socios> llista_socios() { 
+    ObservableList<Socios> llista_socios = FXCollections.observableArrayList();
+    String sql = "select DNI,nombre,apellido,direccion,sancion from socios";
+    Connection connection = new Connexio().connecta();
+    try {
+        Statement ordre = connection.createStatement();
+        ResultSet resultSet = ordre.executeQuery(sql);
+        while (resultSet.next()) {
+                llista_socios.add(
+                    new Socios(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getDouble(5)
+                    )
+                );
+            
+        }
+
+        connection.close();
+
+        // Ordenar la lista por título de libro en orden alfabético
+        Collections.sort(llista_socios, new Comparator<Socios>() {
+            public int compare(Socios socio1, Socios socio2) {
+                return socio1.getNombre().compareToIgnoreCase(socio2.getNombre());
+            }
+        });
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+    return llista_socios;
+}
           
     }
     
